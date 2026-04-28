@@ -1,0 +1,49 @@
+
+/* 
+
+BLUE: #BAE1FF
+GREEN: #BAFFC9
+YELLOW: #FFFFBA
+ORANGE: #FFB347
+RED: #FFB3BA
+BLACK: #222
+WHITE: #eee
+*/
+
+:root {
+    --blue: #BAE1FF;
+    --green: #BAFFC9;
+    --yellow: #FFFFBA;
+    --orange: #FFB347;
+    --red: #FFB3BA;
+    --black: #222;
+    --white: #eee;
+    --darkpurple: #2E0854;
+    --darkblue: #0B3D91;
+}
+
+
+* {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background: var(--blue);
+    color: var(--black)
+}
+
+.dark-mode{
+    background-color: var(--black);
+    color: var(--white);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    color: var(--black);
+    margin: 5vw;
+    padding: 1vw;
+    border-radius: 10px;
+}
