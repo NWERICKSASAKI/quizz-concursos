@@ -4,12 +4,13 @@ header{
     width: 100vw;
     padding: 1vh 1vw 0 1vw;
     user-select: none;
+    height: 5vh;
 }
 
 img{
     color: #333;
     margin-right: auto;
-    height: 10vw;
+    height: 5vw;
     max-height: 100px;
 }
 
