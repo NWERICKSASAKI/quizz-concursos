@@ -1,3 +1,11 @@
+
+// import { carregarJSONs } from './loader.js';
+// import { iniciarQuiz } from './quiz.js';
+// import { mostrarTemas, mostrarPergunta } from './ui.js';
+
+const element_answers = document.getElementById("answers");
+const element_question = document.getElementById("question");
+
 function colocarHeader(){
     const obj_header = document.querySelector("header");
     fetch("utils/header.html")
@@ -48,24 +56,41 @@ function listar_conteudos() {
 }
 
 function adicionar_cards_conteudos(lista) {
-    const container = document.getElementById("answers");
+    element_answers.innerHTML = ''
     letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
     lista.forEach(conteudo => {
         letra = letras.shift();
         let card = `
         <div class="card_alternativa container">
-            <span class="lr c">${letra}</span>
+            <button class="lr c" onclick="iniciar_quiz('${conteudo}')">${letra}</button>
             <p class="conteudo_resposta">
                 ${conteudo}
             </p>
         </div>
         `;
-        container.innerHTML += card;
+        element_answers.innerHTML += card;
+    });
+}
+
+function iniciar_quiz(titulo_conteudo) {
+    fetch(`assets/conteudos/${titulo_conteudo}.json`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            let pergunta = data.lista_perguntas[0].pergunta; // TODO: implementar lógica para percorrer as perguntas
+            element_question.innerHTML = pergunta;
+
+        });
+    // console.log(`Iniciando quiz para o conteúdo: ${titulo_conteudo}`);
+    // Aqui você pode adicionar a lógica para iniciar o quiz, como carregar as perguntas e respostas relacionadas ao conteúdo selecionado.
+}
+
+function carregar_home() {
+    lista = listar_conteudos().then(lista => {
+        adicionar_cards_conteudos(lista);
     });
 }
 
 colocarHeader()
-lista = listar_conteudos().then(lista => {
-    adicionar_cards_conteudos(lista);
-});
+carregar_home()

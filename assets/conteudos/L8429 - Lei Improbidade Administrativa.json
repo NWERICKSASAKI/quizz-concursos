@@ -1,1 +1,27 @@
-{}
+{
+    "lista_perguntas" : [
+        {
+            "pergunta": "Das alternativas abaixos, qual deles é um objetivo da Lei da Improbidade Administrativa?",
+            "respostas_certas": [
+                "Assegurar a probidade na administração pública",
+                "Assegurar a integridade do patrimônio público"
+            ],
+            "respostas_erradas": [
+                "Assegurar a proteção do patrimônio público e social, do meio ambiente e de outros interesses difusos, coletivos e individuais homogêneos",
+                "Assegurar a improbidade na administração pública",
+                "Assegurar a publicidade dos atos administrativos",
+                "Assegurar a segurança dos agentes públicos",
+                "Assegurar que os princípios administrativos sejam seguidos",
+                "Assegurar que qualquer ato culposo de um agente público seja punido"
+            ]
+        },
+        {
+            "pergunta": "Pode-se afirmar que a Lei 8429/92 teve como base o Art. 37, §4 da Constituição Federal de 1988?",
+            "respostas": [
+                "Verdadeiro",
+                "Falso"
+            ],
+            "alternativa_correta": 0
+        }
+    ]
+}
