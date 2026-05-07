@@ -74,7 +74,7 @@ function adicionar_cards_conteudos(lista) {
 }
 
 function iniciar_quiz(titulo_conteudo) {
-    fetch(`assets/conteudos/${titulo_conteudo}.json`)
+    fetch(`./assets/conteudos/${titulo_conteudo}.json`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
