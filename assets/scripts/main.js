@@ -22,18 +22,18 @@ function colocarHeader(){
 function carregarCSSHeader() {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'assets/css/header.css';
+    link.href = './assets/css/header.css';
     document.head.appendChild(link);
 }
 
 function carregarJSHeader() {
     const script = document.createElement('script');
-    script.src = 'assets/scripts/header.js';
+    script.src = './assets/scripts/header.js';
     document.body.appendChild(script);
 }
 
 function listar_conteudos() {
-    return fetch("assets/conteudos/")
+    return fetch("./assets/conteudos/")
         .then(response => response.text())
         .then(data => {
             const parser = new DOMParser();
@@ -94,3 +94,5 @@ function carregar_home() {
 
 colocarHeader()
 carregar_home()
+
+// https://nwericksasaki.github.io/quizz-concursos/
