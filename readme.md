@@ -22,6 +22,8 @@ Lista de coisas que preciso terminar e elaborar para deixar minimente funcional.
 
 Página Home:
 
+- [x] Criar um `index.json` listando todos os arquivos que há na pasta `.assets/conteudos/`
+- [x] Reformular a lógica de listagem das opções de arquivos JSON de `fetch('.assets/conteudos/')` para ler um `index.json`.
 - [ ] Fazer um leitor de arquivos JSON externos para aceitar questões personalizadas
 
 Página de Questões:

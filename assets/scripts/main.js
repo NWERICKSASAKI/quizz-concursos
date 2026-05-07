@@ -33,39 +33,47 @@ function carregarJSHeader() {
 }
 
 function listar_conteudos() {
-    return fetch("./assets/conteudos/")
-        .then(response => response.text())
-        .then(data => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(data, 'text/html');
-            const links = htmlDoc.querySelectorAll('a');
-
-            const arquivos_json = [];
-
-            links.forEach(link => {
-                if (link.href.endsWith('.json')) {
-                    let fileName = link.href.split('/').pop();
-                    fileName = fileName.replace(/%20/g, ' ');
-                    fileName = fileName.replace('.json', '');
-                    arquivos_json.push(fileName);
-                }
-            });
-
-            return arquivos_json;
-        });
+    return fetch("./assets/conteudos/index.json")
+        .then(response => response.json())
 }
+
+// function listar_conteudos() {
+//     return fetch("./assets/conteudos/")
+//         .then(response => response.text())
+//         .then(data => {
+//             const parser = new DOMParser();
+//             const htmlDoc = parser.parseFromString(data, 'text/html');
+//             const links = htmlDoc.querySelectorAll('a');
+
+//             const arquivos_json = [];
+
+//             links.forEach(link => {
+//                 if (link.href.endsWith('.json')) {
+//                     let fileName = link.href.split('/').pop();
+//                     fileName = fileName.replace(/%20/g, ' ');
+//                     fileName = fileName.replace('.json', '');
+//                     arquivos_json.push(fileName);
+//                 }
+//             });
+
+//             return arquivos_json;
+//         });
+// }
 
 function adicionar_cards_conteudos(lista) {
     element_answers.innerHTML = ''
     letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
     lista.forEach(conteudo => {
+        const nome = conteudo.nome;
+        const file_path = `./assets/conteudos/${conteudo.file}`
+
         letra = letras.shift();
         let card = `
         <div class="card_alternativa container">
-            <button class="lr c" onclick="iniciar_quiz('${conteudo}')">${letra}</button>
+            <button class="lr c" onclick="iniciar_quiz('${file_path}')">${letra}</button>
             <p class="conteudo_resposta">
-                ${conteudo}
+                ${conteudo.nome}
             </p>
         </div>
         `;
@@ -73,8 +81,8 @@ function adicionar_cards_conteudos(lista) {
     });
 }
 
-function iniciar_quiz(titulo_conteudo) {
-    fetch(`./assets/conteudos/${titulo_conteudo}.json`)
+function iniciar_quiz(path_conteudo) {
+    fetch(`${path_conteudo}`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
